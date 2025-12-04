@@ -20,6 +20,7 @@ pipeline {
 
         stage('Add known host') {
             steps {
+                sh "mkdir -p ~/.ssh"
                 sh "ssh-keyscan -H target >> ~/.ssh/known_hosts"
             }
         }
