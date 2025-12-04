@@ -18,10 +18,16 @@ pipeline {
             }
         }
 
-	stage('Deploy') {
-    	    steps {
-        	sh 'scp main laborant@target:~'
-    	    }
-	}
+        stage('Add known host') {
+            steps {
+                sh "ssh-keyscan -H target >> ~/.ssh/known_hosts"
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'scp main laborant@target:~'
+            }
+        }
     }
 }
