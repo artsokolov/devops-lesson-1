@@ -17,5 +17,11 @@ pipeline {
                 sh "go build main.go"
             }
         }
+
+	stage('Deploy') {
+    	    steps {
+        	sh 'scp main laborant@target:~'
+    	    }
+	}
     }
 }
