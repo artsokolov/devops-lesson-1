@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'scp -i ${private_key} main ${username}@target:~'
+                sh "scp -i ${private_key} main ${username}@target:~"
             }
         }
     }
