@@ -27,7 +27,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: '1ccaf00e-e031-4b52-9fc1-1b69a35f65b2', keyFileVariable: 'private_key', usernameVariable: 'username')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: '2b0067a5-f154-4262-b46a-66b447de4b01', keyFileVariable: 'private_key', usernameVariable: 'username')]) {
                     sh 'scp -i ${private_key} main ${username}@target:~'
                 }
             }
