@@ -25,10 +25,17 @@ pipeline {
             }
         }
 
+	stage('Build') {
+	    steps {
+	    	sh "docker build . --tag ttl.sh/superpupergoapp:2h"
+		sh "docker push ttl.sh/superpupergoapp:2h"
+	    }
+	}
+
         stage('Deploy') {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: '1ccaf00e-e031-4b52-9fc1-1b69a35f65b2', keyFileVariable: 'private_key', usernameVariable: 'username')]) {
-                    sh 'scp -i ${private_key} main ${username}@target:~'
+                withCredentials([sshUserPrivateKey(credentialsId: '900bc006-9472-4825-afa9-ed5831dba305', keyFileVariable: '', usernameVariable: 'username')]) {
+		    sh 'ssh -i ${private_key} ${username}@docker "docker run --pull always -p 4444:4444 -d ttl.sh/superpupergoapp:2h"'
                 }
             }
         }
