@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-	stage('Build') {
+	stage('Build docker image') {
 	    steps {
 	    	sh "docker build . --tag ttl.sh/superpupergoapp:2h"
 		sh "docker push ttl.sh/superpupergoapp:2h"
