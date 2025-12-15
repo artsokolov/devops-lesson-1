@@ -1,3 +1,3 @@
-FROM debian:trixie-slim
+FROM scratch
 COPY main /main
 CMD ["/main"]
