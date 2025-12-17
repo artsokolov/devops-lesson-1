@@ -21,7 +21,7 @@ pipeline {
         stage('Add known host') {
             steps {
                 sh "mkdir -p ~/.ssh"
-                sh "ssh-keyscan -H docker >> ~/.ssh/known_hosts"
+                sh "ssh-keyscan -H 16.176.23.7 >> ~/.ssh/known_hosts"
             }
         }
 
