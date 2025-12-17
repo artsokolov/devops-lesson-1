@@ -34,8 +34,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: '900bc006-9472-4825-afa9-ed5831dba305', keyFileVariable: 'private_key', usernameVariable: 'username')]) {
-		    sh 'ssh -i ${private_key} ${username}@docker "\
+                withCredentials([sshUserPrivateKey(credentialsId: '77fca62e-71a3-44d2-9874-b3cc1483d832', keyFileVariable: 'private_key', usernameVariable: 'username')]) {
+		    sh 'ssh -i ${private_key} ${username}@16.176.23.7 "\
 		    	docker rm -f superpupergoapp || true && \
 		    	docker run --name superpupergoapp --pull always -p 4444:4444 -d ttl.sh/superpupergoapp:2h \
 		    "'
